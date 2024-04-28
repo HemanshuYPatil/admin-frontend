@@ -1,0 +1,6 @@
+/* Add hover effect to the table row */
+tbody tr:hover {
+    background-color: var(--side-link-hover-color);
+    cursor: pointer;
+  }
+  
