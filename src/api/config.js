@@ -17,7 +17,7 @@ const firebaseConfig = {
   
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-
+  const realdb = getDatabase(app);
 
   const real = getDatabase(app);
 
@@ -61,6 +61,6 @@ const firebaseConfig = {
     }
   };
   
-  export {db,collection,onSnapshot,real,searchDocumentId};
+  export {db,collection,onSnapshot,real,realdb,searchDocumentId,app};
 
 

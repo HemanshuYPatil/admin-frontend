@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { ThemeContext } from "../../context/ThemeContext"; // Import ThemeContext
+import { ThemeContext } from "../../context/ThemeContext";
 import { DARK_THEME } from "../../constants/themeConstants";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";

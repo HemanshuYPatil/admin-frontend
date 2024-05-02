@@ -12,6 +12,7 @@ import {
   MdOutlineGridView,
   MdOutlineLogout,
   MdOutlineMessage,
+  MdOutlinePeople,
   MdOutlinePerson,
   MdOutlineSettings,
   MdOutlineShoppingBag,
@@ -85,11 +86,20 @@ const Sidebar = () => {
               </Link>
             </li> */}
             <li className="menu-item">
-              <Link to="order" className={`menu-link ${location.pathname === '/user/order' ? 'active' : ''}`}>
+              <Link to="order" className={`menu-link ${location.pathname === '/user/order' || location.pathname === '/user/order/orders' ? 'active' : ''}`}>
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
                 </span>
                 <span className="menu-link-text">Orders</span>
+              </Link>
+            </li>
+
+            <li className="menu-item">
+              <Link to="request" className={`menu-link ${location.pathname === '/user/request' ? 'active' : ''}`}>
+                <span className="menu-link-icon">
+                  <MdOutlinePeople size={18} />
+                </span>
+                <span className="menu-link-text">Request</span>
               </Link>
             </li>
 

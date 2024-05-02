@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MdOutlineMenu } from "react-icons/md";
-import { DARK_THEME } from "../../constants/themeConstants";
-import { ThemeContext } from "../../context/ThemeContext";
-import { db, onSnapshot, collection,searchDocumentId } from '../../api/config';
+import { DARK_THEME } from "../../constants/themeConstants.js";
+import { ThemeContext } from "../../context/ThemeContext.jsx";
+import { db, onSnapshot, collection, searchDocumentId } from '../../api/config.js';
 import { SlArrowRight } from "react-icons/sl";
 import './order.css';
 
+import { AreaCharts } from "../../components/index.js";
+import AreaBarChart from "../../components/dashboard/areaCharts/AreaBarChart.jsx";
+import ChartComponent from "../../components/dashboard/areaCharts/apexchart.jsx";
+import Ordercard from "../../components/dashboard/areaCards/ordercard.jsx";
 const Order = () => {
   const [orders, setOrders] = useState([]);
   const { theme } = useContext(ThemeContext);
@@ -62,21 +66,25 @@ const Order = () => {
           </span>
         );
       default:
-        return null; // No specific style for other 
+        return null; 
     }
   };
 
 
   return (
     <section className="content-area-top">
-      <div className="area-top-l mb-5">
-        <button className="sidebar-open-btn" type="button">
+     <div className="area-top-l">
+        <button
+          className="sidebar-open-btn"
+          type="button"
+         
+        >
           <MdOutlineMenu size={24} />
         </button>
         <h2 className="area-top-title text-3xl">Orders</h2>
-      </div>
-
+      </div> 
       <div className="w-full h-full overflow-hidden">
+        
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
           <table
             style={{ background: theme === DARK_THEME ? "#252538" : "#FFFFFF" }}
@@ -86,7 +94,7 @@ const Order = () => {
               style={{ backgroundColor: theme === DARK_THEME ? "#383854" : "#F2F4FF" }}
               className="text-sm text-gray-700  bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
-              <tr className="text-white"  style={{ color: theme === DARK_THEME ? "white" : "black" }}>
+              <tr className="text-white" style={{ color: theme === DARK_THEME ? "white" : "black" }}>
                 <th scope="col" className="px-6 py-3"> # </th>
                 <th scope="col" className="px-6 py-3"> Order ID </th>
                 <th scope="col" className="px-6 py-3"> Name</th>
@@ -96,12 +104,12 @@ const Order = () => {
                 <th scope="col" className="px-6 py-3"> Contact No </th>
                 <th scope="col" className="px-6 py-3"> Price </th>
                 <th scope="col" className="px-6 py-3"> Status </th>
-             
+
               </tr>
             </thead>
             <tbody style={{ paddingTop: "20px", color: theme === DARK_THEME ? "white" : "black" }}>
               {orders.map((order, index) => (
-                <tr key={order.id} className="text-white" style={{ color: theme === DARK_THEME ? "white" : "black" }} onClick={() => handleRowClick(order.ID)}>
+                <tr key={order.id} className="text-white" style={{ color: theme === DARK_THEME ? "white" : "black" }} >
                   <td className="px-6 py-4">{index + 1}</td>
                   <td className="px-6 py-4">{order.OrderId}</td>
                   <td className="px-6 py-4">{order.Customer}</td>
@@ -112,14 +120,17 @@ const Order = () => {
 
                   <td className="px-6 py-4"> {order.Price ? `₹${order.Price}` : "Pending"}</td>
                   <td className="px-6 py-4">{getStatusElement(order.Status)}</td>
-                  
-                  
+
+
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </div>
+
+      
+
     </section>
   );
 };

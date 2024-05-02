@@ -1,3 +1,5 @@
+
+
 const data = [
   {
     id: 1,
@@ -28,9 +30,9 @@ const data = [
 
 const AreaProgressChart = () => {
   return (
-    <div className="progress-bar">
+    <div className="progress-bar"  style={{ width: '59%', height: '367px',marginTop: '10px' }}>
       <div className="progress-bar-info">
-        <h4 className="progress-bar-title">Most Sold Items</h4>
+        <h4 className="progress-bar-title">Most Used Bots</h4>
       </div>
       <div className="progress-bar-list">
         {data?.map((progressbar) => {

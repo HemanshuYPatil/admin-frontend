@@ -13,10 +13,12 @@ import LoginForm from "./components/login/form";
 import RegisterForm from "./components/register/form";
 import Privateroute from "./PrivateRouts/privateroute";
 import Appss from "./components/ex";
-import Order from "./screens/oder/order";
+// import Order from "./screens/order/order";
 import Edituser from "./screens/edit/edit";
 import Transcation from "./screens/Trancation/trancation";
 import Request from "./screens/Request/request";
+import OrderScreen from "./screens/order/orderscreen";
+import Order from "./screens/order/table";
 
 
 function App() {
@@ -44,7 +46,8 @@ function App() {
             <Route element={<BaseLayout />}>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="dashboard/edit" element={<Edituser />} />
-              <Route path="order" element={<Order />} />
+              <Route path="order" element={<OrderScreen />} />
+              <Route path="order/orders" element={<Order />} />
               <Route path="trancation" element={<Transcation />} />
               <Route path="request" element={<Request />} />
         

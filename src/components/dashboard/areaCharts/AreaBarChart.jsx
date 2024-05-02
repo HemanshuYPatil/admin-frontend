@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { ThemeContext } from "../../../context/ThemeContext";
 import { FaArrowUpLong } from "react-icons/fa6";
-import { LIGHT_THEME } from "../../../constants/themeConstants";
+import { LIGHT_THEME,DARK_THEME } from "../../../constants/themeConstants";
 import "./AreaCharts.scss";
 
 const data = [

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { ref, set, getDatabase, push } from "firebase/database";
 import axios from "axios";
 import { initializeApp } from "firebase/app";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const RegisterForm = () => {
   const { theme } = useContext(ThemeContext);
@@ -33,32 +35,65 @@ const RegisterForm = () => {
       return;
     }
 
+   
+
+    
+   
+
+   
+    try {
+      const db = getDatabase();
+      const uniqueId = uuidv4();
+      const path = `admin-request/${uniqueId}`; 
+  
+  
+      const acceptedRequestsRef = ref(db, path);
+  
+      // Your data object to be stored
+      const userData = {
+          Name: name,
+          id: uniqueId,
+          Email: email,
+          Password: password,
+          Time: Date.now(),
+      };
+  
+   
+      set(acceptedRequestsRef, userData)
+          .then(() => {
+              console.log("Data stored successfully with unique ID:", uniqueId);
+              setsuccess(true);
+              setTimeout(() => {
+                setsuccess(false);
+                navigate('/');
+              }, 6000);
+          })
+          .catch((error) => {
+              console.error("Error storing data:", error);
+          });
+  } catch (error) {
+      console.error("Error accessing database:", error);
+  }
 
 
-    // Create an object to hold user data
-    const userData = {
-      Name: name,
-      Email: email,
-      Password: password,
-      Time: Date.now(),
-      Status: ''
-    };
 
 
-
-    axios.post('https://chatbuddy-9d4f4-default-rtdb.firebaseio.com/admin-request.json', userData)
-      .then((response) => {
-        setsuccess(true);
-        setTimeout(() => {
-          setsuccess(false);
-          navigate('/');
-        }, 3000);
-      })
-      .catch((error) => {
-        seterror('Error registering user');
-        setTimeout(() => seterror(''), 5000);
-      });
+    // axios.post('https://chatbuddy-9d4f4-default-rtdb.firebaseio.com/admin-request.json', userData)
+    //   .then((response) => {
+    //     setsuccess(true);
+        // setTimeout(() => {
+        //   setsuccess(false);
+        //   navigate('/');
+        // }, 3000);
+    //   })
+    //   .catch((error) => {
+    //     seterror('Error registering user');
+    //     setTimeout(() => seterror(''), 5000);
+    //   });
+  
   };
+
+
 
 
   function handleclick() {
@@ -89,7 +124,8 @@ const RegisterForm = () => {
             </svg>
             <span className="sr-only">Info</span>
             <div>
-              <span className="font-medium text-bold">Account Successfully Created!    </span>
+              <span className="font-medium text-bold">Successfully Apply for Admin!    </span>
+              <p>Wait for approve your request</p>
             </div>
           </div>
         )}
