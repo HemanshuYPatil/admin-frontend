@@ -10,7 +10,7 @@ const AreaCards = () => {
   const [userCount, setUserCount] = useState(null);
   const [usergroup,setusergroup] = useState(null);
   const [userbot,setuserbot] = useState(null);
-  
+      
   
   useEffect(() => {
     const fetchData = async () => {
