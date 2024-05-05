@@ -29,7 +29,8 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const modalRef = useRef(null);
   const logged = localStorage.getItem('logged-user');
-  // closing the navbar when clicked outside the sidebar area
+
+  
   const handleClickOutside = (event) => {
     if (
       navbarRef.current &&
@@ -77,14 +78,7 @@ const Sidebar = () => {
                 <span className="menu-link-text">Home</span>
               </Link>
             </li>
-            {/* <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlinePeople size={20} />
-                </span>
-                <span className="menu-link-text">Groups</span>
-              </Link>
-            </li> */}
+           
             <li className="menu-item">
               <Link to="order" className={`menu-link ${location.pathname === '/user/order' || location.pathname === '/user/order/orders' ? 'active' : ''}`}>
                 <span className="menu-link-icon">
